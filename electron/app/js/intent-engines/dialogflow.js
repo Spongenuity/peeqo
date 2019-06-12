@@ -143,6 +143,7 @@ class DialogflowSpeech {
 			} else {
 				console.log("DIALOGFLOW > NO RESULT/NTN HEARD")
 				event.emit('no-command')
+				event.emit('wakeword-lost')
 			}	
 
 			self.request = null

@@ -74,6 +74,7 @@ async function setAnswer(ans=null, overrides={}){
 }
 
 function wakeword(){
+	event.emit('wakeword-heard');
 	setAnswer(responses.wakeword, {type:'wakeword'})
 }
 
