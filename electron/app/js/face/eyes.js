@@ -7,7 +7,7 @@ const snap = Snap("#eyes")
 
 class Eyes {
 
-	constructor(color="#000000"){
+	constructor(color="#FFFFFF"){
 
 		this.eyeSize = 87.5
 		this.closedEye = 1
