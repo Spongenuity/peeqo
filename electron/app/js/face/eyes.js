@@ -12,8 +12,8 @@ class Eyes {
 		this.eyeSize = 87.5
 		this.closedEye = 1
 		this.blinkDuration = 120
-		this.leftEye = snap.ellipse(202.5, 330, this.eyeSize, this.eyeSize)
-		this.rightEye = snap.ellipse(604.5, 330, this.eyeSize, this.eyeSize)
+		this.leftEye = snap.ellipse(202.5, 300, this.eyeSize, this.eyeSize)
+		this.rightEye = snap.ellipse(604.5, 300, this.eyeSize, this.eyeSize)
 		this.isBlinking = false
 		this.blinkTimer = null
 		this.eyes = snap.group(this.leftEye, this.rightEye)
