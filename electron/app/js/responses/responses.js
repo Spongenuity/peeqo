@@ -39,7 +39,10 @@ module.exports = {
 			anim: 'blink',
 			color: 'green'
 		},
-		sound: null
+		sound: null,
+		cbDuring: function(){
+			event.emit('wakeword-lost')
+		}
 	},
 
 	bye: {
@@ -75,7 +78,7 @@ module.exports = {
 			anim: "blink",
 			color: "green"
 		},
-		sound: null
+		sound: null,
 	},
 
 	alarm: {

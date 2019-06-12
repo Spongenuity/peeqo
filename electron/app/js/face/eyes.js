@@ -62,9 +62,11 @@ class Eyes {
 
 		// eye animation when transitioning after displaying media
 
+
 		this.leftEye.animate({ry:this.eyeSize, rx:this.eyeSize}, this.transitionSpeed, mina.easein())
 		this.rightEye.animate({ry:this.eyeSize, rx:this.eyeSize}, this.transitionSpeed, mina.easein(), ()=>{
 			console.log("transitioned back")
+			// this.squashout()
 			this.startBlinking()
 		})
 	}
@@ -76,7 +78,8 @@ class Eyes {
 		if(this.isBlinking){
 			this.stopBlinking()
 		}
-
+		this.leftSquish.animate({ ry: 10 }, this.transitionSpeed, mina.elastic())
+		this.rightSquish.animate({ ry: 10 }, this.transitionSpeed, mina.elastic())
 		this.leftEye.animate({ry:this.transitionSize, rx:this.transitionSize}, this.transitionSpeed, mina.elastic())
 		this.rightEye.animate({ry:this.transitionSize, rx:this.transitionSize}, this.transitionSpeed, mina.elastic(), ()=>{
 			console.log("transitioned away")
@@ -116,13 +119,13 @@ class Eyes {
 		let squishes = ['leftSquish','rightSquish']
 		for(const i in squishes){
 			// this[squishes[i]].animate({ transform: 't0,-120' }, 200, mina.easein());
-			this[squishes[i]].animate({ ry: 200 }, 100, mina.bounce());
+			this[squishes[i]].animate({ ry: 200 }, 200, mina.elastic());
 		}
 	}
 	squashout(){
 		let squishes = ['leftSquish','rightSquish']
 		for(const i in squishes){
-			this[squishes[i]].animate({ ry: 87.5 }, 300, mina.easeout());
+			this[squishes[i]].animate({ ry: 87.5 }, this.transitionSpeed, mina.easein());
 		}
 	}
 
