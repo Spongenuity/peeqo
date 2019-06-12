@@ -55,7 +55,7 @@ class DialogflowSpeech {
 		this.stream = client.streamingDetectIntent()
 		this.result = ''
 		this.unpipeTimer = null
-		this.listenFor = 4000
+		this.listenFor = 5500
 		this.intentObj = {}
 		this.sttStream = null
 		// this.wakewordDetector = wakewordDetector
