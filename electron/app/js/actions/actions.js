@@ -23,7 +23,7 @@ async function setAnswer(ans=null, overrides={}){
 	let r = null
 
 	if(ans.type == 'remote'){
-		r = await media.findRemoteGif(q)
+		r = await media.findRemoteVideo(q)
 		console.log(`MEDIA URL > ${r}`)
 	} else {
 		// local response
