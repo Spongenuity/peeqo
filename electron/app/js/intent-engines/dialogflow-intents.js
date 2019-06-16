@@ -3,6 +3,7 @@ const weather = require('js/skills/weather')
 const Timer = require('js/skills/timer')
 const event = require('js/events/events')
 const responses = require('js/responses/responses')
+const fetch = require('node-fetch')
 
 function parseIntent(cmd){
 
@@ -16,6 +17,17 @@ function parseIntent(cmd){
 
 		case "greeting":
 			actions.setAnswer(responses.greeting, {type: 'remote'})
+			break
+
+		case "portrait":
+			actions.setAnswer(responses.portrait, {type: 'local'})
+			console.log("DRAWING A PORTRAIT")
+			fetch('https://maker.ifttt.com/trigger/webhook_ping/with/key/cIpuYgYsW0KWGFla00I1i9')
+			break
+
+		case "sleep":
+			actions.setAnswer(responses.sleep)
+			console.log("SLEEEEEEEEEEEEEPP")
 			break
 
 		case "camera":
@@ -36,7 +48,7 @@ function parseIntent(cmd){
 			break
 
 		case "goodbye":
-			actions.setAnswer(responses.bye, {type: 'local'})
+			actions.setAnswer(responses.bye, {type: 'remote'})
 			break
 		default:
 			actions.setAnswer(responses.confused, {type:'local'})

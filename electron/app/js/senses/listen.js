@@ -90,6 +90,10 @@ function startListening(){
 	mic.getMic().pipe(wakewordDetector)
 }
 
+// function pauseListening(){
+// 	mic.pause()
+// }
+
 module.exports = {
 	startListening
 }

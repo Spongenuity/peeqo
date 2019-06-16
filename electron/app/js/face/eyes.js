@@ -3,6 +3,8 @@
 const event = require('js/events/events')
 const Snap = require('snapsvg')
 const snap = Snap("#eyes")
+const mic = require('js/senses/mic')
+
 //small change to test
 
 class Eyes {
@@ -20,6 +22,7 @@ class Eyes {
 		this.blinkTimer = null
 		this.eyes = snap.group(this.leftEye, this.rightEye)
 		this.squishes = snap.group(this.leftSquish, this.rightSquish)
+		this.sleepEye = snap.rect(0, 0, 800, 150)
 		this.blinkIntervals = [4000, 6000, 10000, 1000, 500, 8000]
 		this.transitionSize = 1000
 		this.transitionSpeed = 100
@@ -32,6 +35,10 @@ class Eyes {
 			fill: "#000000",
 		})
 
+		this.sleepEye.attr({
+			fill: "#000000",
+		})
+
 		this.startBlinking = this.startBlinking.bind(this)
 		this.stopBlinking =  this.stopBlinking.bind(this)
 		this.transitionToMedia = this.transitionToMedia.bind(this)
@@ -39,6 +46,7 @@ class Eyes {
 		this.blink = this.blink.bind(this)
 		this.squashin = this.squashin.bind(this)
 		this.squashout = this.squashout.bind(this)
+		this.sleepeye = this.sleepeye.bind(this)
 
 		event.on('start-blinking', this.startBlinking)
 		event.on('stop-blinking', this.stopBlinking)
@@ -46,6 +54,7 @@ class Eyes {
 		event.on('transition-eyes-back', this.transitionFromMedia)
 		event.on('wakeword-heard', this.squashin)
 		event.on('wakeword-lost', this.squashout)
+		event.on('sleep-time', this.sleepeye)
 	}
 
 	getRandomBlinkInterval(){
@@ -89,7 +98,11 @@ class Eyes {
 
 	blink() {
 
+		// mic.stopMic()
+
 		let eyes = ['leftEye','rightEye']
+
+		// this.wakeeye()
 
 		for(const i in eyes){
 			this[eyes[i]].animate({ry: this.closedEye}, this.blinkDuration, mina.elastic(), () => {
@@ -102,10 +115,6 @@ class Eyes {
 		this.blinkTimer = null
 		let duration = this.getRandomBlinkInterval()
 		this.blinkTimer = setTimeout(this.blink, duration)
-
-		// event.emit('wakeword-heard')
-		// this.squash()
-
 
 	}
 
@@ -127,6 +136,17 @@ class Eyes {
 		for(const i in squishes){
 			this[squishes[i]].animate({ ry: 87.5 }, this.transitionSpeed, mina.easein());
 		}
+	}
+
+	sleepeye(){
+		this.sleepEye.animate({ transform: 't0,190' }, 2000, mina.elastic());
+		// mic.stopMic()
+
+	}
+
+	wakeeye(){
+		this.sleepEye.animate({ transform: 't0,-190' }, 200, mina.elastic());
+
 	}
 
 

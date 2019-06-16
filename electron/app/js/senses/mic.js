@@ -27,6 +27,12 @@ class Mic {
 	getMic(){
 		return this.mic
 	}
+
+	stopMic(){
+		// this.mic = null
+		this.mic = record.stop()
+		return this.mic
+	}
 }
 
 const mic = new Mic()

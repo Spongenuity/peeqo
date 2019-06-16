@@ -91,4 +91,39 @@ module.exports = {
 		},
 		sound:null
 	},
+
+	portrait: {
+		localFolder: "portrait",
+		queryTerms:["painting","bob ross"],
+		servo: "jiggle",
+		led: {
+			anim: "blink",
+			color: "aqua"
+		},
+		sound:null
+
+	},
+
+	sleep: {
+		localFolder: null,
+		queryTerms: null,
+		servo: null,
+		led: {
+			anim:'circle',
+			color: 'aqua'
+		},
+		sound: null,
+		cbBefore: function(){
+			event.emit('wakeword-lost')
+			event.emit('sleep-time')
+			// event.emit('stop-blinking')
+		},
+		// cbDuring: function(){
+		// 	event.emit('speech-to-text')
+		// },
+		// cbAfter: function(){
+		// 	event.emit('speech-to-text')
+		// }
+	},
+
 }
