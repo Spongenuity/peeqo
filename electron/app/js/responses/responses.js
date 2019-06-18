@@ -104,6 +104,18 @@ module.exports = {
 
 	},
 
+		moveit: {
+		localFolder: "moveit",
+		queryTerms:["painting","bob ross"],
+		servo: "moveit",
+		led: {
+			anim: "blink",
+			color: "aqua"
+		},
+		sound:null
+
+	},
+
 	sleep: {
 		localFolder: null,
 		queryTerms: null,

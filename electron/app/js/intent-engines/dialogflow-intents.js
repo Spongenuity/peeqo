@@ -19,6 +19,10 @@ function parseIntent(cmd){
 			actions.setAnswer(responses.greeting, {type: 'remote'})
 			break
 
+		case "moveit":
+			actions.setAnswer(responses.moveit, {type: 'local'})
+			break
+
 		case "portrait":
 			actions.setAnswer(responses.portrait, {type: 'local'})
 			console.log("DRAWING A PORTRAIT")
